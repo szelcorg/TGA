@@ -1,0 +1,8 @@
+out
+Storage
+build
+distributions
+/.idea
+/.idea/workspace.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
