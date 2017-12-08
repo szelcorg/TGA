@@ -5,11 +5,7 @@ import org.jxmapviewer.viewer.GeoPosition;
 /**
  * @author by marcin.szelc on 2017-12-08.
  */
-public class LapTraining {
-
-
-    private LapGeoPosition lapGeoPositions;
-
-
-
+public class LapGeoPosition {
+    GeoPosition start;
+    GeoPosition end;
 }
