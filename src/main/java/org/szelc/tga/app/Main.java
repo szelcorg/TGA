@@ -1,16 +1,26 @@
 package org.szelc.tga.app;
 
 
+import fit.FitParser;
 import javafx.application.Application;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.jxmapviewer.viewer.GeoPosition;
+import org.szelc.map.Map;
 import org.szelc.tga.log.LOG;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.InputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +28,7 @@ import java.util.logging.Logger;
  * @author by marcin.szelc on 2017-12-08.
  */
 public class Main extends Application {
-
+    Pane rootPane;
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 390.0;
     private final double MINIMUM_WINDOW_HEIGHT = 500.0;
@@ -30,8 +40,21 @@ public class Main extends Application {
         Application.launch(Main.class, (String[]) null);
     }
 
+    public void loadPoint(){
+        MainListenerImpl l = new MainListenerImpl(this);
+        FitParser fit = new FitParser(l);
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+
+
+        StackPane swingPane = new StackPane();
+        swingPane.setMinSize(1900,950);
+
+
         LOG.i("Start");
         try {
             stage = primaryStage;
@@ -43,6 +66,8 @@ public class Main extends Application {
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        loadPoint();
 
     }
 
@@ -65,15 +90,49 @@ public class Main extends Application {
         InputStream in = Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
-        AnchorPane page;
+
         try {
-            page = (AnchorPane) loader.load(in);
+            rootPane = (Pane) loader.load(in);
         } finally {
             //in.close();
         }
-        Scene scene = new Scene(page, 800, 600);
+
+        Scene scene = new Scene(rootPane, 1000, 800);
         stage.setScene(scene);
         stage.sizeToScene();
         return (Initializable) loader.getController();
+    }
+
+    private void createSwingContent(final SwingNode swingNode, JPanel panel) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                swingNode.setContent(panel);
+            }
+        });
+    }
+
+
+
+
+    public void finishLoadPoint(List<GeoPosition> routePoint, List<GeoPosition> wayPoint) {
+        Map map = new Map();
+
+
+        final SwingNode swingNode = new SwingNode();
+        StackPane swingStackPane = new StackPane();
+        JPanel testPane = new JPanel();
+        testPane.setSize(new Dimension(1000, 800));
+        testPane.add(new JButton("adjajsdk"));
+      createSwingContent(swingNode, map.finishLoadPoint(routePoint, wayPoint));
+       // createSwingContent(swingNode, testPane);
+        swingStackPane.getChildren().add(swingNode);
+
+        Tab tabMap = new Tab();
+        tabMap.setText("Map");
+        tabMap.setContent(swingStackPane);
+
+        TabPane tabPane = (TabPane)rootPane.getChildren().get(0);
+        tabPane.getTabs().add(tabMap);
     }
 }

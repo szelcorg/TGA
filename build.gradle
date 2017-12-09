@@ -7,9 +7,16 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
+
+    compile group: 'org.szelc', name: 'fit', version: '1.0-SNAPSHOT'
+    compile group: 'org.szelc', name: 'map', version: '1.0-SNAPSHOT'
+
+    compile group: 'com.garmin', name: 'fit', version: '16.0'
+    compile group: 'com.zenjava', name: 'javafx-maven-plugin', version: '8.1.2'
 
     compile group: 'org.jxmapviewer', name: 'jxmapviewer2', version: '2.0'
     compile 'org.jsoup:jsoup:1.10.3'
