@@ -124,6 +124,7 @@ public class Map {
 
         // Set the focus
         mapViewer.zoomToBestFit(new HashSet<GeoPosition>(routePoint), 1);
+        mapViewer.setZoom(7);
 
         // Create a waypoint painter that takes all the waypoints
         //WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<Waypoint>();

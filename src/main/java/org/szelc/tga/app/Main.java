@@ -3,11 +3,14 @@ package org.szelc.tga.app;
 
 import fit.FitParser;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
@@ -19,6 +22,7 @@ import org.szelc.tga.log.LOG;
 
 import javax.swing.*;
 import java.awt.*;
+import java.beans.EventHandler;
 import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,6 +36,7 @@ public class Main extends Application {
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 390.0;
     private final double MINIMUM_WINDOW_HEIGHT = 500.0;
+    JPanel mapPanel = new JPanel();
 
     /**
      * @param args the command line arguments
@@ -67,7 +72,7 @@ public class Main extends Application {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        loadPoint();
+        addMapTab();
 
     }
 
@@ -113,19 +118,15 @@ public class Main extends Application {
     }
 
 
-
-
-    public void finishLoadPoint(List<GeoPosition> routePoint, List<GeoPosition> wayPoint) {
-        Map map = new Map();
-
+    public void addMapTab(){
 
         final SwingNode swingNode = new SwingNode();
         StackPane swingStackPane = new StackPane();
         JPanel testPane = new JPanel();
         testPane.setSize(new Dimension(1000, 800));
         testPane.add(new JButton("adjajsdk"));
-      createSwingContent(swingNode, map.finishLoadPoint(routePoint, wayPoint));
-       // createSwingContent(swingNode, testPane);
+        createSwingContent(swingNode, mapPanel);
+        // createSwingContent(swingNode, testPane);
         swingStackPane.getChildren().add(swingNode);
 
         Tab tabMap = new Tab();
@@ -134,5 +135,28 @@ public class Main extends Application {
 
         TabPane tabPane = (TabPane)rootPane.getChildren().get(0);
         tabPane.getTabs().add(tabMap);
+
+        tabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                LOG.i("NEW VALUE ["+newValue+"]");
+                if(newValue.toString().equals("2")){
+                    loadPoint();
+                    LOG.i("Selected");
+                }
+            }
+        });
+    }
+
+
+    public void finishLoadPoint(List<GeoPosition> routePoint, List<GeoPosition> wayPoint) {
+        Map map = new Map();
+        JPanel p = map.finishLoadPoint(routePoint, wayPoint);
+
+        mapPanel.setBackground(Color.RED);
+        mapPanel.setLayout(new BorderLayout());
+        p.setMinimumSize(new Dimension(800, 600));
+        mapPanel.add(p, BorderLayout.CENTER);
+
     }
 }
