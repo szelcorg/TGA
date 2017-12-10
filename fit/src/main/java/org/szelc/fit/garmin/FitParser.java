@@ -1,6 +1,8 @@
-package fit;
+package org.szelc.fit.garmin;
 
 import com.garmin.fit.*;
+import org.szelc.fit.controller.FitLoaderListener;
+import org.szelc.fit.listener.MainListener;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -9,11 +11,10 @@ import java.util.Collection;
 
 public class FitParser implements MonitoringMesgListener {
 
-
         String filename = "C:\\ProgramData\\Garmin\\GarminConnect\\Forerunner 910XT-3896405506\\FIT_TYPE_4\\636478914480000000382.fit";
-        public FitParser(MainListener s){
+        public FitParser(FitReadListener fitListener){
             try (FileInputStream fis = new FileInputStream(new java.io.File(filename))) {
-                new Decode().read(fis, new FitReadListener(s));
+                new Decode().read(fis, fitListener);
 
             } catch (IOException ioe) {
                 ioe.printStackTrace();

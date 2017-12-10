@@ -1,4 +1,4 @@
-package org.szelc.tga.log;
+package org.szelc.log;
 
 
 import org.apache.log4j.Logger;
@@ -12,5 +12,9 @@ public class LOG {
 
     public static void i(String msg){
         log.info(msg);
+    }
+
+    public static void d(String msg){
+        log.debug(msg);
     }
 }

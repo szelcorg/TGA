@@ -1,4 +1,4 @@
-package fit;
+package org.szelc.fit.listener;
 
 import org.jxmapviewer.viewer.GeoPosition;
 

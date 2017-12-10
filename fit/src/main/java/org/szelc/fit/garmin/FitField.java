@@ -1,4 +1,4 @@
-package fit;
+package org.szelc.fit.garmin;
 
 import com.garmin.fit.Field;
 import com.garmin.fit.Profile;

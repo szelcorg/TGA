@@ -1,4 +1,4 @@
-package org.szelc.tga.training;
+package org.szelc.fit.training;
 
 import java.time.LocalDateTime;
 

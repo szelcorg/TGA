@@ -1,4 +1,5 @@
 rootProject.name = 'tga'
 include 'fit'
 include 'map'
+include 'log'
 

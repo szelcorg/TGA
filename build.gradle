@@ -12,6 +12,10 @@ repositories {
 
 dependencies {
 
+    compile project(':log')
+    compile project(':map')
+    compile project(':fit')
+
     compile group: 'org.szelc', name: 'fit', version: '1.0-SNAPSHOT'
     compile group: 'org.szelc', name: 'map', version: '1.0-SNAPSHOT'
 

@@ -1,7 +1,8 @@
 package org.szelc.tga.app;
 
 
-import fit.FitParser;
+import org.szelc.fit.controller.FitLoaderListener;
+import org.szelc.fit.garmin.FitParser;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,19 +11,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.jxmapviewer.viewer.GeoPosition;
+import org.szelc.fit.garmin.FitReadListener;
+import org.szelc.fit.training.Training;
+import org.szelc.log.LOG;
 import org.szelc.map.Map;
-import org.szelc.tga.log.LOG;
 
 import javax.swing.*;
 import java.awt.*;
-import java.beans.EventHandler;
 import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ import java.util.logging.Logger;
 /**
  * @author by marcin.szelc on 2017-12-08.
  */
-public class Main extends Application {
+public class Main extends Application implements FitLoaderListener{
     Pane rootPane;
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 390.0;
@@ -45,11 +46,7 @@ public class Main extends Application {
         Application.launch(Main.class, (String[]) null);
     }
 
-    public void loadPoint(){
-        MainListenerImpl l = new MainListenerImpl(this);
-        FitParser fit = new FitParser(l);
 
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -148,15 +145,25 @@ public class Main extends Application {
         });
     }
 
+    public void loadPoint(){
+        FitReadListener fitReadListener = new FitReadListener();
+        fitReadListener.addListener(this);
+        FitParser fit = new FitParser(fitReadListener);
+    }
 
-    public void finishLoadPoint(List<GeoPosition> routePoint, List<GeoPosition> wayPoint) {
+
+    @Override
+    public void loaded(Training training) {
         Map map = new Map();
-        JPanel p = map.finishLoadPoint(routePoint, wayPoint);
+        JPanel p = map.finishLoadPoint(training.getRoutePoint(), training.getWayPoint());
 
         mapPanel.setBackground(Color.RED);
         mapPanel.setLayout(new BorderLayout());
         p.setMinimumSize(new Dimension(800, 600));
         mapPanel.add(p, BorderLayout.CENTER);
 
+        //training.displayWayPoint();
+
+        training.displayRoutePoint();
     }
 }

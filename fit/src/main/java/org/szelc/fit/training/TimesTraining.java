@@ -1,4 +1,4 @@
-package org.szelc.tga.training;
+package org.szelc.fit.training;
 
 /**
  * @author by marcin.szelc on 2017-12-08.
