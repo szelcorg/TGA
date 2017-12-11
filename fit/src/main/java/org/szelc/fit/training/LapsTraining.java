@@ -54,4 +54,12 @@ public class LapsTraining {
         }
         return result;
     }
+
+    public List<SummaryLapTraining> getSummaryLapTrainingList() {
+        List<SummaryLapTraining> result = new ArrayList<>();
+        for(LapTraining l : lapTrainingList){
+            result.add(l.getSummaryLapTraining());
+        }
+        return result;
+    }
 }

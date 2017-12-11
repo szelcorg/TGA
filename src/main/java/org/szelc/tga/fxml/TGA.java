@@ -1,4 +1,4 @@
-package org.szelc.tga.app;
+package org.szelc.tga.fxml;
 
 
 import org.szelc.fit.controller.FitLoaderListener;
@@ -16,7 +16,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.jxmapviewer.viewer.GeoPosition;
 import org.szelc.fit.garmin.FitReadListener;
 import org.szelc.fit.training.Training;
 import org.szelc.log.LOG;
@@ -25,14 +24,13 @@ import org.szelc.map.Map;
 import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author by marcin.szelc on 2017-12-08.
  */
-public class Main extends Application implements FitLoaderListener{
+public class TGA extends Application implements FitLoaderListener{
     Pane rootPane;
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 390.0;
@@ -43,7 +41,7 @@ public class Main extends Application implements FitLoaderListener{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Application.launch(Main.class, (String[]) null);
+        Application.launch(TGA.class, (String[]) null);
     }
 
 
@@ -66,7 +64,7 @@ public class Main extends Application implements FitLoaderListener{
             gotoAntStockMainView();
             primaryStage.show();
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TGA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         addMapTab();
@@ -79,7 +77,7 @@ public class Main extends Application implements FitLoaderListener{
             replaceSceneContent("TGA.fxml");
 
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TGA.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,9 +87,9 @@ public class Main extends Application implements FitLoaderListener{
 
         System.out.println("Load main resource [" + fxml + "]");
 
-        InputStream in = Main.class.getResourceAsStream(fxml);
+        InputStream in = TGA.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(Main.class.getResource(fxml));
+        loader.setLocation(TGA.class.getResource(fxml));
 
         try {
             rootPane = (Pane) loader.load(in);

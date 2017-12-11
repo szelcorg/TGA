@@ -14,7 +14,7 @@ public class LapTraining {
 
     public LapTraining() {
         recordsTraining = new RecordsTraining();
-        summaryLapTraining = new SummaryLapTraining();
+        summaryLapTraining = new SummaryLapTraining(this);
     }
 
     public void addRecord(RecordTraining rec){
@@ -27,6 +27,7 @@ public class LapTraining {
 
     public void setSummaryLapTraining(SummaryLapTraining summaryLapTraining) {
         this.summaryLapTraining = summaryLapTraining;
+        this.summaryLapTraining.setLapTraining(this);
     }
 
     public List<GeoPosition> getPositions(){
@@ -39,5 +40,9 @@ public class LapTraining {
 
     public double getTotalDistance() {
         return summaryLapTraining.getTotalDistance();
+    }
+
+    public short getMinHeartRate() {
+        return recordsTraining.getMinHeartRate();
     }
 }

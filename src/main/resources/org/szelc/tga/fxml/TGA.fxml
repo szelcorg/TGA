@@ -12,7 +12,7 @@
             xmlns:fx="http://javafx.com/fxml" fx:controller="org.szelc.tga.controller.TgaController">
     <children>
 
-        <fx:include fx:id="mainTabbed" source="Tabbed.fxml" />
+        <fx:include fx:id="mainTabbed" source="tab/Tabbed.fxml" />
 
 
         <!--

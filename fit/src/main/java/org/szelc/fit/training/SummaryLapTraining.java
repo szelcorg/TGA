@@ -1,10 +1,25 @@
 package org.szelc.fit.training;
 
+import com.garmin.fit.LocalDateTime;
 import org.jxmapviewer.viewer.GeoPosition;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Collection;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class SummaryLapTraining {
+    LapTraining lapTraining;
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final double GEO_CONVERT_VALUE = 180 / Math.pow(2, 31);
 
     private long timestamp;
@@ -31,7 +46,22 @@ public class SummaryLapTraining {
     private double enhancedAvgSpeed;
     private double getEnhancedMaxSpeed;
 
+    private String y;
+    private int x;
+
+    public LapTraining getLapTraining() {
+        return lapTraining;
+    }
+
+    public void setLapTraining(LapTraining lapTraining) {
+        this.lapTraining = lapTraining;
+    }
+
     public SummaryLapTraining() {
+    }
+
+    public SummaryLapTraining(LapTraining lt) {
+        lapTraining = lt;
     }
 
     public SummaryLapTraining(long timestamp, int startPositionLat, int startPositionLong, int endPositionLat, int endPositionLong,
@@ -64,10 +94,21 @@ public class SummaryLapTraining {
 
     }
 
+
+
+    public int getMinHeartRate(){
+
+        return (int)lapTraining.getMinHeartRate();
+    }
+
     private LapGeoPosition lapGeoPositions;
 
     public long getTimestamp() {
         return timestamp;
+    }
+
+    public String getDateTime(){
+        return dateFormat.format(new Date(timestamp));
     }
 
     public void setTimestamp(long timestamp) {
@@ -78,12 +119,32 @@ public class SummaryLapTraining {
         return startTime;
     }
 
+    /*public LocalDateTime convert(Date d){
+        LocalDateTime dt = new LocalDateTime(timestamp);
+        Instant instant = d.toInstant();
+        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+        return zdt.toLocalDate();
+    }*/
+
+    public String getStartTimeFormat() {
+      //  Date d = dateFormat.parse("1989-12-31 00:00:00");
+
+        LocalDateTime dt = new LocalDateTime(startTime);
+
+        return dateFormat.format(dt.getDate());
+
+    }
+
     public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
     public double getTotalElapsedTime() {
         return totalElapsedTime;
+    }
+
+    public String getTotalElapsedTimeInHours(){
+        return convertSecondsToMiliseconds(totalElapsedTime);
     }
 
     public void setTotalElapsedTime(double totalElapsedTime) {
@@ -94,12 +155,31 @@ public class SummaryLapTraining {
         return totalTimerTime;
     }
 
+    private String convertSecondsToMiliseconds(double seconds){
+        int millis = (int) (seconds * 1000d);
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        df.setTimeZone(tz);
+        return df.format(new Date(millis));
+    }
+
+    public String getTotalTimerTimeInHours(){
+        return convertSecondsToMiliseconds(totalTimerTime);
+    }
+
     public void setTotalTimerTime(double totalTimerTime) {
         this.totalTimerTime = totalTimerTime;
     }
 
     public double getTotalDistance() {
         return totalDistance;
+    }
+
+    public String getTotalDistanceKm(){
+        NumberFormat numberFormat3 = new DecimalFormat();
+        numberFormat3.setMaximumFractionDigits(3);
+        numberFormat3.setMinimumFractionDigits(3);
+        return numberFormat3.format(totalDistance/1000);
     }
 
     public void setTotalDistance(double totalDistance) {

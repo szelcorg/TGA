@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class FitParser implements MonitoringMesgListener {
-
-        String filename = "C:\\ProgramData\\Garmin\\GarminConnect\\Forerunner 910XT-3896405506\\FIT_TYPE_4\\636478914480000000382.fit";
+    String rootPath = "C:\\ProgramData\\Garmin\\GarminConnect\\Forerunner 910XT-3896405506\\FIT_TYPE_4\\";
+    String filename = rootPath+"636485422120000000388.fit";
+       // String filename = rootPath+"636478914480000000382.fit";
         public FitParser(FitReadListener fitListener){
             try (FileInputStream fis = new FileInputStream(new java.io.File(filename))) {
                 new Decode().read(fis, fitListener);

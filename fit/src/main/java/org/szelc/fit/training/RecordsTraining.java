@@ -34,4 +34,13 @@ public class RecordsTraining {
     }
 
 
+    public short getMinHeartRate() {
+        short min = 220;
+        for(RecordTraining rt : recordTrainingList){
+            if(rt.getHeartRate()<min){
+                min = (short)rt.getHeartRate();
+            }
+        }
+        return min;
+    }
 }

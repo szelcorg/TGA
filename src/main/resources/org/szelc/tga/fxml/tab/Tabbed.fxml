@@ -12,13 +12,13 @@
 
         <Tab text="Training">
             <content>
-                <fx:include source="TrainingView.fxml"></fx:include>
+                <fx:include source="../training/TrainingView.fxml"></fx:include>
             </content>
         </Tab>
 
-        <Tab text="Map">
+        <Tab text="Chart">
             <content>
-                <fx:include fx:id="stockEvent" source="MapView.fxml"/>
+                <fx:include  source="../chart/ChartView.fxml"/>
             </content>
         </Tab>
 

@@ -63,4 +63,8 @@ public class Training {
     public double getDistance(){
         return lapsTraining.getTotalDistance();
     }
+
+    public List<SummaryLapTraining> getSummaryLapTrainingList(){
+        return lapsTraining.getSummaryLapTrainingList();
+    }
 }
