@@ -67,4 +67,8 @@ public class Training {
     public List<SummaryLapTraining> getSummaryLapTrainingList(){
         return lapsTraining.getSummaryLapTrainingList();
     }
+
+    public SummaryTraining getSummaryTraining() {
+        return summaryTraining;
+    }
 }

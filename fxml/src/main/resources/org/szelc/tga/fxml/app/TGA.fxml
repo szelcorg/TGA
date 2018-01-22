@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" styleClass="background"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="org.szelc.tga.fxml.controller.TgaController">
+    <children>
+
+        <fx:include fx:id="mainTabbed" source="/org/szelc/tga/fxml/tab/Tabbed.fxml" />
+
+
+        <!--
+
+        <HBox id="hBox1" alignment="CENTER" prefHeight="100.0" prefWidth="1.0" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0">
+            <children>
+                <Label id="label2" fx:id="errorMessage" />
+            </children>
+        </HBox>
+        -->
+    </children>
+    <stylesheets>
+        <URL value="@TGA.css" />
+    </stylesheets>
+</AnchorPane>

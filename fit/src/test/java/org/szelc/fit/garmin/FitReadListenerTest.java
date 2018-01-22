@@ -33,7 +33,7 @@ public class FitReadListenerTest implements FitLoaderListener{
 
     @Override
     public void loaded(Training training) {
-        //training.displayDistance();
+        //org.szelc.tga.fxml.training.displayDistance();
         LOG.i(""+(System.currentTimeMillis() - start));
     }
 }

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
+
+    <children>
+        <TableView fx:id="table" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" xmlns:fx="http://javafx.com/fxml/1">
+            <columns>
+
+
+                <TableColumn id="startTimeFormat" minWidth="130.0" prefWidth="-1.0" text="startTime">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="startTimeFormat" />
+                    </cellValueFactory>
+                </TableColumn>
+
+
+                <TableColumn id="totalDistance" minWidth="100.0" prefWidth="-1.0" text="Distance (m)">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalDistanceKm" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="totalTimerTimeInHours" minWidth="100.0" prefWidth="-1.0" text="totalTimerTime">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalTimerTimeInHours" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="totalElapsedTimeInHours" minWidth="100.0" prefWidth="-1.0" text="totalElapsedTime">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalElapsedTimeInHours" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="avgSpeed" minWidth="100.0" prefWidth="-1.0" text="avgSpeed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="avgSpeed" />
+                    </cellValueFactory>
+                </TableColumn>
+
+<!--
+                <TableColumn id="startPositionLat" minWidth="100.0" prefWidth="-1.0" text="startPositionLat">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="startPositionLat" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="startPositionLong" minWidth="100.0" prefWidth="-1.0" text="startPositionLong">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="startPositionLong" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="endPositionLat" minWidth="100.0" prefWidth="-1.0" text="endPositionLat">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="endPositionLat" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="endPositionLong" minWidth="100.0" prefWidth="-1.0" text="endPositionLong">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="endPositionLong" />
+                    </cellValueFactory>
+                </TableColumn>
+                -->
+
+
+
+                <TableColumn id="totalCalories" minWidth="100.0" prefWidth="-1.0" text="totalCalories">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalCalories" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="x" minWidth="100.0" prefWidth="-1.0" text="x">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="x" />
+                    </cellValueFactory>
+                </TableColumn>
+
+
+                <TableColumn id="maxSpeed" minWidth="100.0" prefWidth="-1.0" text="maxSpeed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="maxSpeed" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="totalAscent" minWidth="100.0" prefWidth="-1.0" text="totalAscent">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalAscent" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="totalDescent" minWidth="100.0" prefWidth="-1.0" text="totalDescent">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalDescent" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="event" minWidth="100.0" prefWidth="-1.0" text="event">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="event" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="eventType" minWidth="100.0" prefWidth="-1.0" text="eventType">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="eventType" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="avgHeartRate" minWidth="100.0" prefWidth="-1.0" text="avgHeartRate">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="avgHeartRate" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="minHeartRate" minWidth="100.0" prefWidth="-1.0" text="minHeartRate">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="minHeartRate" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="maxHeartRate" minWidth="100.0" prefWidth="-1.0" text="maxHeartRate">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="maxHeartRate" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="lapTrigger" minWidth="100.0" prefWidth="-1.0" text="lapTrigger">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lapTrigger" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="sport" minWidth="100.0" prefWidth="-1.0" text="sport">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="sport" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="enhancedAvgSpeed" minWidth="100.0" prefWidth="-1.0" text="enhancedAvgSpeed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="enhancedAvgSpeed" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn id="getEnhancedMaxSpeed" minWidth="100.0" prefWidth="-1.0" text="EnhancedMaxSpeed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="getEnhancedMaxSpeed" />
+                    </cellValueFactory>
+                </TableColumn>
+
+
+
+
+
+            </columns>
+        </TableView>
+    </children>
+
+</fx:root>

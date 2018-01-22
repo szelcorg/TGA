@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0"
+         xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="org.szelc.tga.fxml.controller.TabbedController">
+
+    <tabs>
+
+        <Tab text="Training">
+            <content>
+                <fx:include source="/org/szelc/tga/fxml/training/TrainingView.fxml"></fx:include>
+            </content>
+        </Tab>
+
+        <Tab text="Map1">
+
+        </Tab>
+
+        <Tab text="Data">
+            <content>
+                <fx:include  source="/org/szelc/tga/fxml/summary/TrainingSummaryView.fxml"/>
+            </content>
+        </Tab>
+
+        <Tab text="Chart">
+            <content>
+                <fx:include  source="/org/szelc/tga/fxml/chart/ChartView.fxml"/>
+            </content>
+        </Tab>
+
+
+
+        <!--
+        Map is dynamic loading
+        -->
+
+    </tabs>
+</TabPane>

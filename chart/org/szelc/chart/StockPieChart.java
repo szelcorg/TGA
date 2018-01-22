@@ -30,7 +30,7 @@ public class StockPieChart extends PieChart {
     private static ObservableList<Data> loadDatas(Map<String, Double> datas) {
         List<Data> inner = new ArrayList<>();
         if (datas == null || datas.isEmpty()) {
-            throw new NullPointerException("Stock chart map is empty");
+            throw new NullPointerException("Stock org.szelc.tga.fxml.chart org.szelc.tga.fxml.map is empty");
         }
         datas.forEach((k, v) -> inner.add(new Data(k, v)));
         return FXCollections.observableArrayList(inner);

@@ -30,7 +30,7 @@ public class StockLineChart extends LineChart{
         super(xAxis, yAxis);
         loadDatas(filePath);
         setCreateSymbols(false);
-        getStyleClass().add("thick-chart");
+        getStyleClass().add("thick-org.szelc.tga.fxml.chart");
         //setVerticalGridLinesVisible(false);
     }
 
@@ -38,7 +38,7 @@ public class StockLineChart extends LineChart{
         Series series = new Series();
         List<Data> inner = new ArrayList<>();
         if (datas == null || datas.isEmpty()) {
-            throw new NullPointerException("Stock chart map is empty");
+            throw new NullPointerException("Stock org.szelc.tga.fxml.chart org.szelc.tga.fxml.map is empty");
         }
         datas.forEach((k, v) -> inner.add(new Data(k, v)));
         series.setData(FXCollections.observableArrayList(inner));

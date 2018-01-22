@@ -60,7 +60,7 @@ public class RoutePainter implements Painter<JXMapViewer>
 
 	/**
 	 * @param g the graphics object
-	 * @param map the map
+	 * @param map the org.szelc.tga.fxml.map
 	 */
 	private void drawRoute(Graphics2D g, JXMapViewer map)
 	{

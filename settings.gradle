@@ -3,4 +3,6 @@ include 'fit'
 include 'map'
 include 'log'
 include 'chart'
+include 'fxml'
+include 'testmod'
 
